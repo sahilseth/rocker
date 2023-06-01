@@ -1,0 +1,162 @@
+# -------- CRAN pkgs --------
+devtools
+pacman
+roxygen2
+rsconnect
+rstudioapi
+shiny
+packrat
+
+# formats
+RcppTOML
+xml2
+curl
+RCurl
+XML
+rjson
+RJSONIO
+jsonlite
+
+# reports and IO
+markdown
+rmarkdown
+# presentation
+xaringan
+knitr
+rio
+readODS
+# pandoc writer (markdown)
+pander
+# staticdocs #now pkgdown
+
+# DB
+#rmongodb not available
+RSQLite
+DBI
+RMariaDB
+RPostgreSQL
+getPass
+dbx
+
+# plots
+scatterplot3d
+gplots
+grid
+gridBase
+gridExtra
+plotly
+
+RColorBrewer
+scales
+circlize
+
+ggplot2
+cowplot
+ggsci
+ggrepel
+ggseqlogo
+#gganimate # only on github: dgrtwo/gganimate
+ggfortify
+ggthemes
+# publication ready plots
+ggpubr
+ggstatsplot
+ggExtra
+ggforce
+GGally
+ggtern
+ggmuller
+patchwork
+ggridges
+
+
+crayon
+corrplot
+corrr
+UpSetR
+diagram
+
+# data.frames and wrangling
+reshape2
+dplyr
+tidyr
+purrr
+furrr
+data.table
+lubridate
+tidyverse
+magrittr
+
+# cleaning data
+glue
+janitor
+
+# factors
+forcats
+
+# plots and pkg for book
+# pirateplot() and apa()
+yarrr
+
+
+
+openxlsx
+googlesheets
+readr
+openxlsx
+readxl
+boxr
+Nozzle.R1
+
+base64
+
+
+# models/stat/ml/dl
+Hmisc
+MASS
+fitdistrplus
+logspline
+broom
+effsize
+locfit
+mlr
+tsne
+#h2o
+
+# mlr3 setup:
+
+
+# bayesian stats:
+rstan
+greta
+prophet
+casualImpact
+
+# workflow
+funr
+params
+flowr
+
+# computing
+foreach
+parallel
+
+# clustering
+MCL
+NMF
+fastcluster
+ConsensusClusterPlus
+clusterProfiler
+clusterExperiment
+multiClust
+# for cosine distance etc
+lsa
+
+# latex
+xtable
+stargazer
+
+# bio related
+cgdsr
+
+# stat

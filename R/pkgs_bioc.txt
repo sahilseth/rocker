@@ -1,0 +1,63 @@
+
+# -------- bioconductor pkgs --------
+BiocInstaller
+BiocParallel
+
+## generic
+BSgenome
+BSgenome.Hsapiens.UCSC.hg19
+
+AnnotationDbi
+Biobase
+BiocGenerics
+refGenome
+seqinr
+Biostrings
+GenomicRanges
+GenomeInfoDb
+Rsamtools
+ShortRead
+
+# heatmaps
+ComplexHeatmap
+pheatmap
+
+## rnaseq
+edgeR
+DESeq2
+limma
+
+### PATHWAYS
+GSEABase
+GSVA
+GSA
+gage
+pathview
+
+# CNV
+sequenza
+DNAcopy
+copynumber
+exomeCopy
+
+# genomics
+deconstructSigs
+maftools
+
+# TCGA expreriment related
+TCGAbiolinks
+AIMS
+STROMA4
+SummarizedExperiment
+MultiAssayExperiment
+
+# RNASeq:
+tximport
+
+# scRNA
+Seurat
+
+# sequence related
+PWMEnrich
+seqLogo
+

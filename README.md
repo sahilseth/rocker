@@ -15,7 +15,9 @@ docker build . -f dockerfiles/ml_verse_ss_${tag}.Dockerfile -t rocker_ml-verse:$
 # run `id` on terminal to get user details, and keep a note of them
 
 # start the container:
-docker run -ti -e ROOT=TRUE rocker_ml-verse:${tag} "bash"
+docker run -ti -e ROOT=TRUE sahilseth/rocker_ml-verse:${tag} "bash"
+
+docker run -ti -e ROOT=TRUE rocker/ml-verse:${tag} "bash"
 
 # add your own username:
 # we need to add bioinfo group as well, so that files created have the right permissions
