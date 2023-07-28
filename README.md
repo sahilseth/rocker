@@ -3,7 +3,7 @@ Rocker and related NGS containers
 
 
 
-
+# creating a new container:
 ## 4.2.2
 
 ```
@@ -39,7 +39,6 @@ docker commit ${containerid} rocker_ml-verse:${tag}
 ## start rocker
 
 Alternatively, you may look at my exact scripts here:
-https://biogit.pri.bms.com/seths3/rocker/blob/main/shell/rserver-4.2.sh
 
 ```
 img="rocker_ml-verse"

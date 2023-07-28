@@ -14,8 +14,8 @@ fi
 if [[ `echo $HOSTNAME | grep "dst001"` ]]; then
     docker run -ti -v $HOME:/home/seths3 \
      --rm \
-     -v /stash:/stash -v /aws-storage:/aws-storage \
     -v /:/host_root \
     -u seths3 -w $(pwd) \
     sahilseth/rocker_ml-verse:${tag} R "$@"
 fi
+

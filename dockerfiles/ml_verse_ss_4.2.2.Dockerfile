@@ -27,7 +27,7 @@ RUN apt-get install -y rsync
 RUN apt-get install -y s3fs awscli sshfs
 
 # add my user:
-RUN groupadd --gid 100 sseth && useradd --create-home --uid 100 --gid 100 sseth && adduser sseth sudo
+# RUN groupadd --gid 100 sseth && useradd --create-home --uid 100 --gid 100 sseth && adduser sseth sudo
 # RUN passwd sseth
 # RUN echo sseth:letmein | sudo chpasswd
 

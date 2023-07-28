@@ -5,7 +5,9 @@
 #
 # changed docker image to rocker_pkgs, which has all R packages installed
 # 
-# bash /home//dotfiles/R/rce2_rserver.sh
+# bash /home/sseth//dotfiles/shell/rserver-4.2.2.sh
+# get into the container to check:
+# docker exec -it <mycontainer> bash
 
 img="sahilseth/rocker_ml-verse"
 tag="4.2.2"
@@ -36,10 +38,12 @@ Container is running ${img}:${tag} with ${ncpu} CPUs
 END
 
 
+
 # docker run -d -ti -p $port:8787 -v $(pwd):/home/rstudio -e USER=rstudio -e PASSWORD="sahil.2021"  -e USERID=$(id -u) -e GROUPID=10000 -e ROOT=TRUE --cpus=$ncpu --name $contname rocker/verse:latest /init
 # --user ${USER}
-MOUNTS="-v $HOME:/home/seths3 -v /stash:/stash -v /:/host_root"
-# echo $MOUNTS
+#MOUNTS="-v $HOME:/home/seths3 -v /stash:/stash -v /:/host_root"
+MOUNTS="-v /:/host_root"
+echo $MOUNTS
 PORTS="-p $port_rs:8787 -p $port_ssh:22"
 # docker rm $(docker ps --filter status=exited -q)
     # -u seths3 \
