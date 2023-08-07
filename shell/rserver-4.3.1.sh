@@ -8,14 +8,13 @@
 # bash /home/sseth//dotfiles/shell/rserver-4.2.2.sh
 # get into the container to check:
 # docker exec -it e00b047b8ac9 bash
-# docker exec -it c5175d2fb5ca bash
 
 #img="sahilseth/rocker_ml-verse"
 img="rocker/ml-verse"
-tag="4.2.2"
+tag="4.3.1"
 
 plat="debian"
-ver="4.2"
+ver="4.3"
 
 #export PASSWORD=$(openssl rand -base64 15)
 export PASSWORD="sahil.2021"
@@ -23,7 +22,7 @@ export PASSWORD="sahil.2021"
 # find open ports
 # Please user port 8888, 80, 443, 8080 ~ 8090, and 8443 ~ 8453
 # port=5000
-port_rs=$( ss -tln |    awk 'NR > 1{gsub(/.*:/,"",$4); print $4}' |   sort -un |   awk -v n=8787 '$0 < n {next}; $0 == n {n++; next}; {exit}; END {print n}' )
+port_rs=$( ss -tln |    awk 'NR > 1{gsub(/.*:/,"",$4); print $4}' |   sort -un |   awk -v n=8788 '$0 < n {next}; $0 == n {n++; next}; {exit}; END {print n}' )
 port_ssh=$( ss -tln |    awk 'NR > 1{gsub(/.*:/,"",$4); print $4}' |   sort -un |   awk -v n=8443 '$0 < n {next}; $0 == n {n++; next}; {exit}; END {print n}' )
 # port=8787
 echo "This script will start rstudio server for the calling user in port " $port
@@ -48,8 +47,13 @@ END
 # docker run -d -ti -p $port:8787 -v $(pwd):/home/rstudio -e USER=rstudio -e PASSWORD="sahil.2021"  -e USERID=$(id -u) -e GROUPID=10000 -e ROOT=TRUE --cpus=$ncpu --name $contname rocker/verse:latest /init
 # --user ${USER}
 #MOUNTS="-v $HOME:/home/seths3 -v /stash:/stash -v /:/host_root"
-MOUNTS="-v /:/host_root"
-# -v $HOME:/home/rstudio
+MOUNTS="-v /:/host_root \
+-v /home:/home \
+-v /mnt/gd4t:/mnt/gd4t \
+-v /opt/passwd/passwd:/etc/passwd:ro \
+-v /opt/passwd/group:/etc/group:ro \
+-v /opt/passwd/shadow:/etc/shadow:ro"
+
 echo $MOUNTS
 PORTS="-p $port_rs:8787 -p $port_ssh:22"
 # docker rm $(docker ps --filter status=exited -q)

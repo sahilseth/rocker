@@ -11,11 +11,13 @@ then
   echo "R_LIBS_USER=~/R/${plat}/${ver}" >> ${HOME}/.Renviron
 fi
 
-if [[ `echo $HOSTNAME | grep "dst001"` ]]; then
-    docker run -ti -v $HOME:/home/seths3 \
+#if [[ `echo $HOSTNAME | grep "dst001"` ]]; then
+    docker run -ti -v $HOME:/home/${USER} \
      --rm \
     -v /:/host_root \
-    -u seths3 -w $(pwd) \
+    -w $(pwd) \
+    -u rstudio \
     sahilseth/rocker_ml-verse:${tag} R "$@"
-fi
+#fi
 
+# .libPaths();getwd()
