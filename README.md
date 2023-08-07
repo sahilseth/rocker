@@ -9,30 +9,51 @@ Rocker and related NGS containers
 ```
 tag=4.2.1
 tag=4.2.2
+tag=4.3.1
 
-docker build . -f dockerfiles/ml_verse_ss_${tag}.Dockerfile -t rocker_ml-verse:${tag}
+docker build . -f dockerfiles/ml_verse_ss_${tag}.Dockerfile -t sahilseth/rocker_ml-verse:${tag}
 
+
+# docker run -ti -e ROOT=TRUE rocker/ml-verse:${tag} "bash"
+
+#containerid=e4a9a120ade5
+#docker commit ${containerid} rocker_ml-verse:${tag}
+
+#docker tag ${containerid} sahilseth/ml-verse:${tag}
+
+docker login
+docker push sahilseth/rocker_ml-verse:${tag}
+
+```
+
+
+### add usernames [NO NEED, sync passwd file]
+
+```
 # run `id` on terminal to get user details, and keep a note of them
-
+# updating an existing container with username etc
 # start the container:
+# either use the container from the repo, and add the users
 docker run -ti -e ROOT=TRUE sahilseth/rocker_ml-verse:${tag} "bash"
 
-docker run -ti -e ROOT=TRUE rocker/ml-verse:${tag} "bash"
 
 # add your own username:
 # we need to add bioinfo group as well, so that files created have the right permissions
 # change the username and user id below
-userid=XX
-username=XX
-# groupadd --gid 100 sseth && useradd --create-home --uid ${userid} --gid 100 ${username} && adduser ${username} sudo
+userid=1001;gid=1001
+username=sseth
+groupadd --gid ${gid} ${username} && useradd --create-home --uid ${userid} --gid ${gid} ${username} && adduser ${username} sudo
 
 # change the pwd
-sudo passwd sseth
+sudo passwd ${username}
 
 # ON A NEW TERMINAL, and finder the container ID
 docker ps
-containerid=XXX
-docker commit ${containerid} rocker_ml-verse:${tag}
+containerid=e4a9a120ade5
+docker commit ${containerid} sahilseth/rocker_ml-verse:${tag}
+
+docker login
+docker push sahilseth/rocker_ml-verse:${tag}
 
 ```
 
