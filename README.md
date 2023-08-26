@@ -88,3 +88,10 @@ docker run -ti -d -e PASSWORD=${PASSWORD} ${MOUNTS} ${PORTS} \
 
 ```
 
+## push to dockerhub
+
+```
+docker tag rocker_ml-verse:${tag} sahilseth/rocker_ml-verse:${tag}
+docker push sahilseth/rocker_ml-verse:${tag}
+```
+
