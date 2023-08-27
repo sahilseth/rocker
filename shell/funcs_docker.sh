@@ -1,4 +1,4 @@
-containerid="rocker_binder_seths3_8080"
+containerid="rocker_binder_sseth_8080"
 tag=202308
 # just replacing the tag
 
@@ -20,8 +20,7 @@ rocker_commit()
 
 rocker_push()
 {  
-    aws_ecr_login
-    echo "pushing image to ECR"
+    echo "pushing image to hub"
     docker push sahilseth/rocker_binder:4.3.1_202308
 }
 
@@ -29,4 +28,5 @@ rocker_push()
 omics431(){
     mamba activate omics431
 }
+
 

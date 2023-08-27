@@ -15,6 +15,11 @@
 FROM rocker/binder:4.3.1
 LABEL Name=rocker_binder Version=4.3.1
 
+# add my user:
+ENV userid=1001
+ENV gid=1001
+ENV username=sseth
+
 USER root
 
 # for ggstatsplot --> gmp/Rmpfr
@@ -45,14 +50,14 @@ RUN apt-get update && \
 # pip index versions notebook
 RUN pip install notebook==7.0.2
 
-# add my user:
-RUN groupadd --gid 9500 bioinfo && useradd --create-home --uid 278331 --gid 9500 seths3 && adduser seths3 sudo
+RUN groupadd --gid ${gid} ${username} && useradd --create-home --uid ${userid} --gid ${gid} ${username} && adduser ${username} sudo
 # RUN passwd sseth; default pwd
-RUN echo seths3:letmein | sudo chpasswd
-# https://github.com/rocker-org/rocker-versioned2/blob/master/dockerfiles/binder_4.3.1.Dockerfile
+RUN echo ${username}:letmein | sudo chpasswd
 
+# ref:
+# https://github.com/rocker-org/rocker-versioned2/blob/master/dockerfiles/binder_4.3.1.Dockerfile
 # now as this user:
-USER seths3
+USER ${username}
 
 # installing apps
 RUN mkdir ~/apps
@@ -64,7 +69,7 @@ RUN curl -so ~/mambaforge.sh -L https://github.com/conda-forge/miniforge/release
     && rm ~/mambaforge.sh \
     && umask 000
 
-ENV user="sseth"
+ENV user=${username}
 ENV PATH=/home/${user}/apps/mambaforge/condabin:$PATH
 ENV CONDA_AUTO_UPDATE_CONDA=false
 
@@ -76,7 +81,7 @@ ENV CONDA_AUTO_UPDATE_CONDA=false
 
 
 # running rstudio withing jupyterlab
-ENV NB_USER=seths3
+ENV NB_USER=${username}
 EXPOSE 8888
 EXPOSE 8787
 

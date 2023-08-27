@@ -31,7 +31,7 @@ MOUNTS="-v /:/host_root \
     # --user 1000:1001 \
   #-v /home/sseth/rstudio_home:/home/rstudio \
 
-  docker run -ti \
+docker run -ti \
   --rm \
   -w $(pwd) \
   ${MOUNTS} \

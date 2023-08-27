@@ -1,27 +1,18 @@
 # will add things here, and later move these to the dockerfile as much as possible:
 
-# start docker:
+# start docker the first time, and change the TAG
 imgi="rocker_binder"
 tagi="4.3.1"
-contname="rocker_binder_seths3_8080"
-
-MOUNTS="-v $HOME:/home/sseth/sseth -v /:/host_root"
-PORTS="-p 8085:8787 -p 8080:8888"
-docker run -ti -d -e ${MOUNTS} ${PORTS} \
-    --rm \
-    --privileged \
-    -e ROOT=TRUE \
-    -m ${mem}g --cpus=${ncpu} --name ${contname} ${img}:${tag} \
-    jupyter lab --ip 0.0.0.0 --no-browser --allow-root --NotebookApp.token='letmein'
+contname="rocker_binder_sseth_8080"
 
 # enter the container
 docker exec -it ${contname} bash
+# OR
+rocker
 
 # # saved rstudio preferences
 # # custom setup
 docker commit ${contname} rocker_binder:202308
-
-rocker
 
 # once we update rstudio/jupterlab
 # we may want to reinstall the environment as well
@@ -33,8 +24,18 @@ rocker
 # clone the env (for now)
 # mamba create -n omics431 --clone sseth/apps/mambaforge/envs/omics431
 
+# homedir setup:
+ln -s sseth/projects .
+ln -s sseth/projects2 .
+ln -s sseth/projects_git .
+
 # done to add stuff to bashrc
 mamba init
+
+# install omics431
+# follow: scripts/env_omics431.sh
+
+
 """
 mamba env list
 # conda environments:
@@ -65,9 +66,7 @@ vi /etc/rstudio/rserver.conf
 # rstudio-server restart 
 /init
 
-# homedir setup:
-ln -s sseth/projects .
-ln -s sseth/projects_pub .
+
 
 
 # https://support.nesi.org.nz/hc/en-gb/articles/360004337836-RStudio-via-Jupyter-on-NeSI#:~:text=RStudio%20can%20be%20accessed%20as,where%20RStudio%20will%20be%20accessible.
