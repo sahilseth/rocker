@@ -29,4 +29,8 @@ omics431(){
     mamba activate omics431
 }
 
+omics423(){
+    mamba activate omics423
+}
+
 

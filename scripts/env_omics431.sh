@@ -1,43 +1,59 @@
-# install a env and register with jupyter
-mamba create -n omics423 -c conda-forge r-base==4.2.3 r-rjags
+ install a env and register with jupyter
+mamba create -n omics431 -c conda-forge r-base==4.3.1 r-rjags
 
-mamba activate omics423
+mamba activate omics431
 
-# - install the kernel
-# - need explicitly add base R version it to be maintained.
-# - install several packages from conda forge, and others from biocondas
-# - bioc
-# - install hdf5 for MOVICS etc
-# - variants
-# - clustering
-# - single cell: install LAST lots of dependencies
-mamba install -y -c conda-forge r-base==4.2.3 \
-    r-rjags r-conflicted r-tidyverse \
-    r-remotes r-devtools r-pacman r-janitor r-RcppTOML r-tidylog \
-    r-recommended r-irkernel ipython r-hdf5r r-params r-flowr \
-    r-bedr r-rmarkdown r-rcpp r-pillar r-readr \
+# install the kernel
+# jupyter client
+# tidyverse etc
+# cran clustering
+# plotting
+mamba install -y -c conda-forge r-recommended r-irkernel ipython \
+    jupyter \
+    r-base==4.3.1 r-rjags \
+    r-hdf5r r-params r-flowr r-bedr r-rmarkdown r-rcpp r-pillar r-readr r-effsize \
     r-conflicted r-tidyverse r-remotes r-devtools r-pacman r-janitor r-RcppTOML r-tidylog \
     r-nmf r-snftool r-Rcpp r-pracma r-RcppAnnoy r-RSpectra r-glmnet r-bigmemory \
-    r-ggstatsplot r-ggalluvial r-ggpubr r-wesanderson r-rcartocolor \
-    r-biocmanager \
-    -c bioconda bioconductor-complexheatmap bioconductor-GSVA bioconductor-maftools r-openxlsx \
+    r-ggstatsplot r-ggalluvial r-ggpubr r-wesanderson r-rcartocolor r-circlize \
+    r-biocmanager r-getpass r-yarrr \
+    r-tidymodels r-recipes r-workflows r-workflowsets r-parameters r-broom r-formula.tools \
+    r-survminer r-params
+
+mamba install -y -c r r-base==4.3.1 r-openintro
+
+# bioc
+# bioc variants
+# clustering
+#-c conda-forge r-base==4.3.1 r-rjags \
+mamba install -y -c bioconda r-base==4.3.1 \
+    bioconductor-biocversion \
+    bioconductor-complexheatmap bioconductor-GSVA bioconductor-maftools r-openxlsx \
+    bioconductor-multiassayexperiment \
     bioconductor-rhdf5lib bioconductor-HDF5Array bioconductor-geoquery \
     bioconductor-enrichplot bioconductor-consensusclusterplus bioconductor-deseq2 bioconductor-edger \
-    bioconductor-variantannotation r-vcfr \
-    bioconductor-clusterprofiler r-classdiscovery bioconductor-iclusterplus \
-    -c conda-forge r-seurat
-    
+    bioconductor-variantannotation r-vcfr bioconductor-iranges bioconductor-plyranges \
+    bioconductor-clusterprofiler r-classdiscovery bioconductor-iclusterplus bioconductor-treeio \
+    bioconductor-ggtree bioconductor-genefu \
+    bioconductor-cbioportaldata bioconductor-shortread \
+    r-seurat bioconductor-plyranges
+
+# DB this is also scary, dont use R channel
+mamba install -c r r-base==4.3.1 \
+    r-synchronicity r-dbx r-pins
+# this cant be installed
+
 
 
 # now within R
-R
-
-# .libPaths("/home/seths3/apps/mambaforge/envs/omics423/lib/R/library")
-BiocManager::install(c("PINSPlus", "coca"))
+# .libPaths("/home/seths3/apps/mambaforge/envs/omics431/lib/R/library")
 # install major packages
+BiocManager::install(c("PINSPlus", "coca"))
 remotes::install_github("sahilseth/wranglr")
 remotes::install_github("sahilseth/params")
 remotes::install_github("xlucpu/MOVICS")
+remotes::install_local("projects_git/my.ultraseq/my.ultraseq")
+devtools::install("~/projects/packs_cancergenes")
+
 
 # conda version does not work
 install.packages("synchronicity")
@@ -50,5 +66,5 @@ remotes::install_github("edgararuiz/connections")
 # https://stackoverflow.com/questions/28831854/how-do-i-add-python3-kernel-to-jupyter-ipython
 # register the client
 # register R kernel with jupyter client
-/home/sseth/apps/mambaforge/envs/omics423/bin/R -e 'IRkernel::installspec(name = "R423omics", displayname = "R 4.2.3 omics")'
+/home/sseth/apps/mambaforge/envs/omics431/bin/R -e 'IRkernel::installspec(name = "R431omics", displayname = "R 4.3.1 omics")'
 """

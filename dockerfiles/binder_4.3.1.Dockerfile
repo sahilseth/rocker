@@ -31,7 +31,7 @@ RUN apt-get -y update && apt-get install -y libharfbuzz-dev libfribidi-dev
 RUN apt-get install -y rsync nano
 
 # install AWS tools, and other mounting tools
-RUN apt-get install -y s3fs awscli sshfs
+RUN apt-get install -y s3fs awscli sshfs openssh-server
 
 # install docker
 RUN apt-get update && \
