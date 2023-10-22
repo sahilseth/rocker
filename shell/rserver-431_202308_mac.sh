@@ -39,10 +39,11 @@ END
 
 MOUNTS="-v /:/host_root \
 -v ${HOME}:/home/sseth/sseth \
--v /mnt/gd4t:/mnt/gd4t \
--v /opt/passwd/passwd:/etc/passwd:ro \
--v /opt/passwd/group:/etc/group:ro \
--v /opt/passwd/shadow:/etc/shadow:ro"
+-v /mnt/gd4t:/mnt/gd4t"
+
+# -v /opt/passwd/passwd:/etc/passwd:ro \
+# -v /opt/passwd/group:/etc/group:ro \
+# -v /opt/passwd/shadow:/etc/shadow:ro
 
 echo $MOUNTS
 PORTS="-p $port_rs:8787 -p $port_jp:8888"
