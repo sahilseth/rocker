@@ -38,8 +38,8 @@ END
 
 
 MOUNTS="-v /:/host_root \
--v ${HOME}:/home/sseth/sseth \
--v /mnt/gd4t:/mnt/gd4t"
+-v ${HOME}:/home/sseth/sseth"
+# v /mnt/gd4t:/mnt/gd4t
 
 # -v /opt/passwd/passwd:/etc/passwd:ro \
 # -v /opt/passwd/group:/etc/group:ro \

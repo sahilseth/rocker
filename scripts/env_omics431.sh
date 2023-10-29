@@ -61,6 +61,9 @@ p_install(dbx)
 p_install(pins)
 remotes::install_github("edgararuiz/connections")
 
+remotes::install_github("ebecht/MCPcounter",ref="master", subdir = "Source")
+
+
 
 """
 # https://stackoverflow.com/questions/28831854/how-do-i-add-python3-kernel-to-jupyter-ipython
