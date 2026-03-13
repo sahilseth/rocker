@@ -54,7 +54,6 @@ remotes::install_github("xlucpu/MOVICS")
 remotes::install_local("projects_git/my.ultraseq/my.ultraseq")
 devtools::install("~/projects/packs_cancergenes")
 
-
 # conda version does not work
 install.packages("synchronicity")
 p_install(dbx)
