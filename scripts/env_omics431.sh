@@ -17,7 +17,7 @@ mamba install -y -c conda-forge r-recommended r-irkernel ipython \
     r-ggstatsplot r-ggalluvial r-ggpubr r-wesanderson r-rcartocolor r-circlize \
     r-biocmanager r-getpass r-yarrr \
     r-tidymodels r-recipes r-workflows r-workflowsets r-parameters r-broom r-formula.tools \
-    r-survminer r-params
+    r-survminer r-params r-lsa
 
 mamba install -y -c r r-base==4.3.1 r-openintro
 
@@ -35,7 +35,11 @@ mamba install -y -c bioconda r-base==4.3.1 \
     bioconductor-clusterprofiler r-classdiscovery bioconductor-iclusterplus bioconductor-treeio \
     bioconductor-ggtree bioconductor-genefu \
     bioconductor-cbioportaldata bioconductor-shortread \
-    r-seurat bioconductor-plyranges
+    r-seurat bioconductor-plyranges \
+    r-consensustme r-mcpcounter r-xcell
+
+conda install -c bu_cnio r-base==4.3.1 r-estimate
+
 
 # DB this is also scary, dont use R channel
 mamba install -c r r-base==4.3.1 \
@@ -53,6 +57,7 @@ remotes::install_github("sahilseth/params")
 remotes::install_github("xlucpu/MOVICS")
 remotes::install_local("projects_git/my.ultraseq/my.ultraseq")
 devtools::install("~/projects/packs_cancergenes")
+install.packages("estimate", repos = "http://R-Forge.R-project.org")
 
 # conda version does not work
 install.packages("synchronicity")
